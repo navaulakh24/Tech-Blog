@@ -1,0 +1,23 @@
+<section class="card">
+<header>
+    {{post.name}} {{post.user.username}} {{post.date}}
+    </header>
+    <p> {{post.body}}</p>
+</section>
+<section class="buttons">
+    {{#if editPost}}
+    <button class="btn btn-primary">Edit</button>
+    <script src="/js/edit.js"></script>
+    {{/if}}
+    {{#if loggedin}}
+    <button class="btn btn-primary">Comment</button>
+    <script src="/js/comment.js"></script>
+    {{/if}}
+    <button class="btn btn-primary">Delete</button>
+    <script src="/js/delete.js"></script>
+</section>
+{{#each post.comments as |comment|}}
+{{> comment-details}}
+{{/each}}
+
+{{! Path: views\layouts\comment.handlebars }}
