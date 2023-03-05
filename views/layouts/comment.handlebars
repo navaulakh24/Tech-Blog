@@ -1,0 +1,13 @@
+<section class="painting">
+  <div class="comment-details">
+    <h3>{{comment.body}}</h3>
+    <p>Posted By: {{comment.user.username}} on {{format_date comment.date}}</p>
+  </div>
+</section>
+<section class="buttons">
+  {{#if editComment}}
+  <button id="edit_comment" class="btn btn-primary" type="button">Edit</button>
+  <button id="delete_comment" class="btn btn-primary" type="button">Delete</button>
+  <script src="/js/editcomment.js"></script>
+  {{/if}}
+</section>

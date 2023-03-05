@@ -1,0 +1,10 @@
+<header>
+    <h3>My Posts</h3>
+</header>
+{{#each posts as |post|}}
+{{> post-details}}
+{{/each}}
+{{#if loggedIn}}
+<button id="add_post" class="btn btn-primary" type="button">Add Post</button>
+<script src="/js/addpost.js"></script>
+{{/if}}
