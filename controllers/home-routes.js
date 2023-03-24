@@ -2,7 +2,7 @@ const router = require('express').Router();
 const { User, Comment, Post } = require('../models');
 const withAuth = require('../utils/auth');
 
-router.get("/", async (req, res) => {
+router.get("/", withAuth, async (req, res) => {
     try {
         const dbPostData = await Post.findAll({
             include: [
@@ -15,10 +15,10 @@ router.get("/", async (req, res) => {
             ],
         });
 
-        const posts = dbPostData.map((post) => post.get({ plain: true }));
+        const postsData = dbPostData.map((post) => post.get({ plain: true }));
 
         res.render("homepage", {
-            posts,
+            posts: postsData,
             loggedIn: req.session.loggedIn,
         });
     } catch (err) {
@@ -92,12 +92,12 @@ router.get("/comment/:id", async (req, res) => {
     }
 });
 
-router.get("/signUp", (req, res) => {
+router.get("/signup", (req, res) => {
     if (req.session.logged_in) {
         res.redirect("/");
         return;
     }
-    res.render("signUp");
+    res.render("signup");
 });
 
 router.get("/login", (req, res) => {

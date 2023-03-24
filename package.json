@@ -7,7 +7,7 @@
     "test": "jest",
     "start": "node server.js",
     "watch": "nodemon server.js",
-    "seed": "node seeds/index.js"
+    "seed": "node seeds/seed.js"
   },
   "repository": {
     "type": "git",
@@ -18,13 +18,14 @@
   "dependencies": {
     "bcrypt": "^5.0.0",
     "connect-session-sequelize": "^6.1.1",
+    "dayjs": "^1.11.7",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "express-handlebars": "^7.0.1",
     "express-session": "^1.17.1",
     "mysql2": "^2.1.0",
     "nodemon": "^2.0.4",
-    "sequelize": "^6.29.0"
+    "sequelize": "^5.x"
   },
   "devDependencies": {
     "eslint": "^8.35.0"

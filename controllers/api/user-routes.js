@@ -134,17 +134,18 @@ router.delete("/comment/:id", withAuth, async (req, res) => {
     }
 });
 
-router.post("/", withAuth, async (req, res) => {
+router.post("/", async (req, res) => {
     try {
         const userData = await User.create(req.body);
         req.session.save(() => {
             req.session.loggedIn = true;
-            username: req.body.username,
-            password: req.body.password,
-            email: req.body.email,
+            req.session.username = req.body.username;
+            req.session.email = req.body.email;
+            req.session.user_id = req.body.id
             res.status(200).json(userData);
         });
     } catch (err) {
+        console.log(err)
         res.status(500).json(err);
     }
 });
@@ -166,6 +167,7 @@ router.post("/login", (req, res) => {
         }
         req.session.save(() => {
             req.session.user_id = dbUserData.id;
+            req.session.email = dbUserData.email;
             req.session.username = dbUserData.username;
             req.session.loggedIn = true;
             res.json({ user: dbUserData, message: "You are now logged in!" });

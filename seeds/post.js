@@ -17,7 +17,7 @@ const postData = [
         name: 'Post 3',
         date: '2021-01-01',
         body: 'This is a third post',
-        user_id: 3
+        user_id: 1
     },
 
 ];

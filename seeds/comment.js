@@ -16,7 +16,7 @@ const commentData = [
     {
         body: 'This is a third comment',
         date: '2021-01-01',
-        user_id: 3,
+        user_id: 1,
         post_id: 3
     },
 
